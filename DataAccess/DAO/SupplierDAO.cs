@@ -1,9 +1,8 @@
-﻿
-using Backend.Entities;
-using BusinessObjects.Entities;
+﻿using BusinessObjects.Entities;
+using DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend.DAO;
+namespace DataAccess.DAO;
 
 public class SupplierDAO
 {

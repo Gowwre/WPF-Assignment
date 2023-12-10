@@ -1,8 +1,8 @@
-﻿using Backend.DAO;
-using Backend.Entities;
+﻿using DataAccess.Entities;
 using BusinessObjects.Entities;
+using DataAccess.DAO;
 
-namespace Backend.Repositories;
+namespace DataAccess.Repositories;
 
 public class SupplierRepository : ISupplierRepository
 {

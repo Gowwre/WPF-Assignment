@@ -1,7 +1,7 @@
-﻿using Backend.Entities;
+﻿using DataAccess.Entities;
 using BusinessObjects.Entities;
 
-namespace Backend.Repositories;
+namespace DataAccess.Repositories;
 
 public interface ICarInformationRepository
 {

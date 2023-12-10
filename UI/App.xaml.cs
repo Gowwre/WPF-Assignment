@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using Backend.Repositories;
-using Backend.Services;
+using DataAccess.Repositories;
+using DataAccess.Services;
 using Microsoft.Extensions.DependencyInjection;
 using UI.Utils;
 using UI.View;

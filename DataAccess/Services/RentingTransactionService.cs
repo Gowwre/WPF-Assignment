@@ -1,7 +1,7 @@
-﻿using Backend.Repositories;
-using BusinessObjects.Entities;
+﻿using BusinessObjects.Entities;
+using DataAccess.Repositories;
 
-namespace Backend.Services {
+namespace DataAccess.Services {
     public class RentingTransactionService : IRentingTransactionService {
         private readonly IRentingTransactionRepository _rentingTransactionRepository;
 

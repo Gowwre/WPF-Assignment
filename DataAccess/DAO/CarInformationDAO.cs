@@ -1,6 +1,6 @@
-using Backend.Entities;
+using DataAccess.Entities;
 
-namespace Backend.DAO;
+namespace DataAccess.DAO;
 using Microsoft.EntityFrameworkCore;
 using BusinessObjects.Entities;
 

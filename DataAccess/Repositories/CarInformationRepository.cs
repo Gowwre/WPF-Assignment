@@ -1,7 +1,7 @@
-﻿using Backend.DAO;
-using BusinessObjects.Entities;
+﻿using BusinessObjects.Entities;
+using DataAccess.DAO;
 
-namespace Backend.Repositories;
+namespace DataAccess.Repositories;
 
 public class CarInformationRepository : ICarInformationRepository
 {

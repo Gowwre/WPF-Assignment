@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Backend.Entities;
+namespace DataAccess.Entities;
 
 public partial class FucarRentingManagementContext : DbContext
 {

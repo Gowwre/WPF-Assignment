@@ -1,6 +1,6 @@
 
 using System.Windows;
-using Backend.Entities;
+using DataAccess.Entities;
 using BusinessObjects.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using UI.View;

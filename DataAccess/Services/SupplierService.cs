@@ -1,8 +1,8 @@
-﻿using Backend.Entities;
-using Backend.Repositories;
+﻿using DataAccess.Entities;
 using BusinessObjects.Entities;
+using DataAccess.Repositories;
 
-namespace Backend.Services;
+namespace DataAccess.Services;
 
 public class SupplierService : ISupplierService
 {

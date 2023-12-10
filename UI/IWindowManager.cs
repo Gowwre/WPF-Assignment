@@ -1,5 +1,5 @@
 ﻿
-using Backend.Entities;
+using DataAccess.Entities;
 using BusinessObjects.Entities;
 
 namespace UI;

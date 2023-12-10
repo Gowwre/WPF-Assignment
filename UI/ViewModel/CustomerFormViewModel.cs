@@ -1,5 +1,5 @@
-﻿using Backend.Entities;
-using Backend.Services;
+﻿using DataAccess.Entities;
+using DataAccess.Services;
 using BusinessObjects.Entities;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;

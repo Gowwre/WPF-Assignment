@@ -5,7 +5,7 @@ namespace UI.ViewModel;
 
 using System.Collections.ObjectModel;
 using System.Windows;
-using Backend.Services;
+using DataAccess.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 

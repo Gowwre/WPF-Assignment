@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{2064CAE5-6C06-450F-9C78-CE9118B41496}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend", "Backend\Backend.csproj", "{D2C62B54-DBC4-4A37-ADA7-D6B961643661}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessObjects", "BusinessObjects\BusinessObjects.csproj", "{500DAF9E-FF5E-4D62-A73B-C2DFE0EB7889}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2064CAE5-6C06-450F-9C78-CE9118B41496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2064CAE5-6C06-450F-9C78-CE9118B41496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2064CAE5-6C06-450F-9C78-CE9118B41496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2064CAE5-6C06-450F-9C78-CE9118B41496}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2C62B54-DBC4-4A37-ADA7-D6B961643661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C62B54-DBC4-4A37-ADA7-D6B961643661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C62B54-DBC4-4A37-ADA7-D6B961643661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C62B54-DBC4-4A37-ADA7-D6B961643661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{500DAF9E-FF5E-4D62-A73B-C2DFE0EB7889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{500DAF9E-FF5E-4D62-A73B-C2DFE0EB7889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{500DAF9E-FF5E-4D62-A73B-C2DFE0EB7889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{500DAF9E-FF5E-4D62-A73B-C2DFE0EB7889}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {317F175E-AD47-4371-8E60-7CC3FC4DAEF9}
+	EndGlobalSection
+EndGlobal

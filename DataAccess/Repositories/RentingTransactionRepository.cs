@@ -1,12 +1,11 @@
-﻿using DataAccess.Entities;
-using BusinessObjects.Entities;
+﻿using BusinessObjects.Entities;
 using DataAccess.DAO;
 
 namespace DataAccess.Repositories {
     public class RentingTransactionRepository : IRentingTransactionRepository {
         public Task<List<RentingTransaction>> GetAllRentingTransactions() {
             try {
-                var result = RentingTransactionDAO.Instance.GetAllRentingTransactions();
+                Task<List<RentingTransaction>> result = RentingTransactionDAO.Instance.GetAllRentingTransactions();
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);
@@ -15,7 +14,8 @@ namespace DataAccess.Repositories {
 
         public Task<List<RentingTransaction>> GetTransactionsByCustomerEmail(string email) {
             try {
-                var result = RentingTransactionDAO.Instance.GetRentingTransactionsByCustomerEmail(email);
+                Task<List<RentingTransaction>> result =
+                    RentingTransactionDAO.Instance.GetRentingTransactionsByCustomerEmail(email);
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);
@@ -24,7 +24,7 @@ namespace DataAccess.Repositories {
 
         public Task<List<RentingDetail>> GetRentingDetails() {
             try {
-                var result = RentingTransactionDAO.Instance.GetRentingDetails();
+                Task<List<RentingDetail>> result = RentingTransactionDAO.Instance.GetRentingDetails();
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);
@@ -33,12 +33,11 @@ namespace DataAccess.Repositories {
 
         public Task<List<RentingTransaction>> GetRentingTransactions() {
             try {
-                var result = RentingTransactionDAO.Instance.GetRentingTransactions();
+                Task<List<RentingTransaction>> result = RentingTransactionDAO.Instance.GetRentingTransactions();
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);
             }
         }
-        
     }
 }

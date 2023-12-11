@@ -12,7 +12,8 @@ namespace DataAccess.Services {
 
         public Task<List<RentingTransaction>> GetTransactionsByCustomerEmail(string customerEmail) {
             try {
-                var result = _rentingTransactionRepository.GetTransactionsByCustomerEmail(customerEmail);
+                Task<List<RentingTransaction>> result =
+                    _rentingTransactionRepository.GetTransactionsByCustomerEmail(customerEmail);
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);
@@ -21,7 +22,7 @@ namespace DataAccess.Services {
 
         public Task<List<RentingDetail>> GetRentingDetails() {
             try {
-                var result = _rentingTransactionRepository.GetRentingDetails();
+                Task<List<RentingDetail>> result = _rentingTransactionRepository.GetRentingDetails();
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);
@@ -30,7 +31,7 @@ namespace DataAccess.Services {
 
         public Task<List<RentingTransaction>> GetRentingTransactions() {
             try {
-                var result = _rentingTransactionRepository.GetRentingTransactions();
+                Task<List<RentingTransaction>> result = _rentingTransactionRepository.GetRentingTransactions();
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);

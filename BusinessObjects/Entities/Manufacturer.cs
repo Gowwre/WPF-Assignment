@@ -1,14 +1,13 @@
-﻿namespace BusinessObjects.Entities;
+﻿namespace BusinessObjects.Entities {
+    public class Manufacturer {
+        public int ManufacturerId { get; set; }
 
-public partial class Manufacturer
-{
-    public int ManufacturerId { get; set; }
+        public string ManufacturerName { get; set; } = null!;
 
-    public string ManufacturerName { get; set; } = null!;
+        public string? Description { get; set; }
 
-    public string? Description { get; set; }
+        public string? ManufacturerCountry { get; set; }
 
-    public string? ManufacturerCountry { get; set; }
-
-    public virtual ICollection<CarInformation> CarInformations { get; set; } = new List<CarInformation>();
+        public virtual ICollection<CarInformation> CarInformations { get; set; } = new List<CarInformation>();
+    }
 }

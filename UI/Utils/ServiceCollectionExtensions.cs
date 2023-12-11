@@ -10,8 +10,8 @@ namespace UI.Utils {
         public static IServiceCollection AddWindowManager(this IServiceCollection serviceCollection) {
             serviceCollection.AddSingleton<IWindowManager, WindowManager>();
             return serviceCollection;
-        } 
-        
+        }
+
         public static IServiceCollection AddViewModels(this IServiceCollection serviceCollection) {
             serviceCollection.AddTransient<LoginViewModel>();
             serviceCollection.AddTransient<AdminNavViewModel>();
@@ -24,7 +24,7 @@ namespace UI.Utils {
             serviceCollection.AddTransient<CustomerProfileViewModel>();
             return serviceCollection;
         }
-        
+
         public static IServiceCollection AddViews(this IServiceCollection serviceCollection) {
             serviceCollection.AddTransient<LoginWindow>();
             serviceCollection.AddTransient<AdminWindow>();
@@ -37,7 +37,7 @@ namespace UI.Utils {
             serviceCollection.AddTransient<CustomerProfileWindow>();
             return serviceCollection;
         }
-        
+
         public static IServiceCollection AddServices(this IServiceCollection serviceCollection) {
             serviceCollection.AddTransient<ICustomerService, CustomerService>();
             serviceCollection.AddTransient<ICarInformationService, CarInformationService>();
@@ -47,7 +47,7 @@ namespace UI.Utils {
             serviceCollection.AddScoped<IRentingTransactionService, RentingTransactionService>();
             return serviceCollection;
         }
-        
+
         public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection) {
             serviceCollection.AddTransient<ICustomerRepository, CustomerRepository>();
             serviceCollection.AddTransient<ICarInformationRepository, CarInformationRepository>();

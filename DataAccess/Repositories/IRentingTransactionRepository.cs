@@ -1,5 +1,4 @@
-﻿using DataAccess.Entities;
-using BusinessObjects.Entities;
+﻿using BusinessObjects.Entities;
 
 namespace DataAccess.Repositories {
     public interface IRentingTransactionRepository {

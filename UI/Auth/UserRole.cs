@@ -1,7 +1,6 @@
-﻿namespace UI.Auth;
-
-public enum UserRole
-{
-    Admin,
-    Customer
+﻿namespace UI.Auth {
+    public enum UserRole {
+        Admin,
+        Customer
+    }
 }

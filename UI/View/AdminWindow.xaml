@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UI.View"
         xmlns:viewmodel="clr-namespace:UI.ViewModel"
         d:DataContext="{d:DesignInstance Type=viewmodel:AdminNavViewModel}"
         mc:Ignorable="d"
@@ -11,13 +10,16 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
     <DockPanel>
-        <TextBlock Text="Administration Panel" DockPanel.Dock="Top" FontSize="18" Margin="10" HorizontalAlignment="Center"/>
+        <TextBlock Text="Administration Panel" DockPanel.Dock="Top" FontSize="18" Margin="10"
+                   HorizontalAlignment="Center" />
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
-            <ui:Button Appearance="Primary" HorizontalAlignment="Center" Content="Customer Management" Command="{Binding OpenCustomerManagementWindowCommand}" Margin="5"/>
-            <ui:Button Appearance="Primary" Content="Car Management" Command="{Binding OpenCarManagementWindowCommand}" HorizontalAlignment="Center" Margin="5"/>
-            <ui:Button Appearance="Primary" Content="Renting Transaction Management" Command="{Binding OpenRentingTransactionWindowCommand}" HorizontalAlignment="Center" Margin="5"/>
+            <ui:Button Appearance="Primary" HorizontalAlignment="Center" Content="Customer Management"
+                       Command="{Binding OpenCustomerManagementWindowCommand}" Margin="5" />
+            <ui:Button Appearance="Primary" Content="Car Management" Command="{Binding OpenCarManagementWindowCommand}"
+                       HorizontalAlignment="Center" Margin="5" />
+            <ui:Button Appearance="Primary" Content="Renting Transaction Management"
+                       Command="{Binding OpenRentingTransactionWindowCommand}" HorizontalAlignment="Center" Margin="5" />
         </StackPanel>
     </DockPanel>
 </Window>
-

@@ -1,9 +1,7 @@
-﻿using DataAccess.Entities;
-using BusinessObjects.Entities;
+﻿using BusinessObjects.Entities;
 
-namespace DataAccess.Services;
-
-public interface ISupplierService
-{
-    Task<List<Supplier>> GetSuppliers();
+namespace DataAccess.Services {
+    public interface ISupplierService {
+        Task<List<Supplier>> GetSuppliers();
+    }
 }

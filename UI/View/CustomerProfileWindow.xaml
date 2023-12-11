@@ -3,39 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Customer Profile" Height="500" Width="600"
         ResizeMode="CanMinimize"
-        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UI.View"
         xmlns:viewmodel="clr-namespace:UI.ViewModel"
         d:DataContext="{d:DesignInstance Type=viewmodel:CustomerProfileViewModel}"
-        mc:Ignorable="d"
-        >
+        mc:Ignorable="d">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="5">
-            <TextBlock Text="Personal Information" FontWeight="Bold" FontSize="16" Margin="5"/>
-            <TextBlock Text="Name:" FontWeight="SemiBold"/>
-            <TextBlock Text="{Binding Customer.CustomerName}"/>
-            <TextBlock Text="Telephone:" FontWeight="SemiBold"/>
-            <TextBlock Text="{Binding Customer.Telephone}"/>
-            <TextBlock Text="Email:" FontWeight="SemiBold"/>
-            <TextBlock Text="{Binding Customer.Email}"/>
-            <TextBlock Text="Birthday:" FontWeight="SemiBold"/>
-            <TextBlock Text="{Binding Customer.CustomerBirthday}"/>
+            <TextBlock Text="Personal Information" FontWeight="Bold" FontSize="16" Margin="5" />
+            <TextBlock Text="Name:" FontWeight="SemiBold" />
+            <TextBlock Text="{Binding Customer.CustomerName}" />
+            <TextBlock Text="Telephone:" FontWeight="SemiBold" />
+            <TextBlock Text="{Binding Customer.Telephone}" />
+            <TextBlock Text="Email:" FontWeight="SemiBold" />
+            <TextBlock Text="{Binding Customer.Email}" />
+            <TextBlock Text="Birthday:" FontWeight="SemiBold" />
+            <TextBlock Text="{Binding Customer.CustomerBirthday}" />
         </StackPanel>
 
-        <TextBlock Grid.Row="1" Text="Renting Transactions" FontWeight="Bold" FontSize="16" Margin="5"/>
-        <DataGrid Grid.Row="2" ItemsSource="{Binding CustomerRentingTransactions}" Margin="5" AutoGenerateColumns="False">
+        <TextBlock Grid.Row="1" Text="Renting Transactions" FontWeight="Bold" FontSize="16" Margin="5" />
+        <DataGrid Grid.Row="2" ItemsSource="{Binding CustomerRentingTransactions}" Margin="5"
+                  AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Transaction ID" Binding="{Binding RentingTransationId}" Width="*" />
-                <DataGridTextColumn Header="Renting Date" Binding="{Binding RentingDate, StringFormat=\{0:d\}}" Width="*"/>
-                <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice, StringFormat=C}" Width="*"/>
+                <DataGridTextColumn Header="Renting Date" Binding="{Binding RentingDate, StringFormat=\{0:d\}}"
+                                    Width="*" />
+                <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice, StringFormat=C}" Width="*" />
                 <DataGridTextColumn Header="Status" Width="*" Binding="{Binding RentingStatus}" />
             </DataGrid.Columns>
         </DataGrid>

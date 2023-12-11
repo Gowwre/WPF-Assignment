@@ -1,115 +1,98 @@
 using BusinessObjects.Entities;
-
-namespace UI.ViewModel;
-
-
-using System.Collections.ObjectModel;
-using System.Windows;
-using DataAccess.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DataAccess.Services;
+using System.Collections.ObjectModel;
+using System.Reflection;
+using System.Windows;
 
-public partial class CarFormViewModel : ObservableObject
-{
+namespace UI.ViewModel {
+    public partial class CarFormViewModel : ObservableObject {
+        private readonly ICarInformationService _carInformationService;
+        private readonly IManufacturerService _manufacturerService;
 
-    private readonly ISupplierService _supplierService;
-    private readonly IManufacturerService _manufacturerService;
-    private readonly ICarInformationService _carInformationService;
-    private readonly IWindowManager _windowManager;
+        private readonly ISupplierService _supplierService;
+        private readonly IWindowManager _windowManager;
 
-    public CarFormViewModel(ISupplierService supplierService, IManufacturerService manufacturerService, ICarInformationService carInformationService, IWindowManager windowManager)
-    {
+        [ObservableProperty] private CarInformation _carInformation = new();
 
-        this._supplierService = supplierService;
-        this._manufacturerService = manufacturerService;
-        this._carInformationService = carInformationService;
-        this._windowManager = windowManager;
+        [ObservableProperty] private ObservableCollection<Manufacturer> _manufacturers;
 
-        this.Suppliers = new ObservableCollection<Supplier>();
-        this.Manufacturers = new ObservableCollection<Manufacturer>();
+        [ObservableProperty] private Manufacturer _selectedManufacturer = new();
+
+        [ObservableProperty] private Supplier _selectedSupplier = new();
+
+        [ObservableProperty] private ObservableCollection<Supplier> _suppliers;
+
+        public CarFormViewModel(ISupplierService supplierService, IManufacturerService manufacturerService,
+            ICarInformationService carInformationService, IWindowManager windowManager) {
+            _supplierService = supplierService;
+            _manufacturerService = manufacturerService;
+            _carInformationService = carInformationService;
+            _windowManager = windowManager;
+
+            Suppliers = new ObservableCollection<Supplier>();
+            Manufacturers = new ObservableCollection<Manufacturer>();
 
 
-        this.GetSupplierList();
-        this.GetManufacturerList();
-    }
-
-    [ObservableProperty]
-    private CarInformation _carInformation = new CarInformation();
-    [ObservableProperty]
-    private ObservableCollection<Supplier> _suppliers;
-    [ObservableProperty]
-    private ObservableCollection<Manufacturer> _manufacturers;
-    [ObservableProperty]
-    private Supplier _selectedSupplier = new Supplier();
-    [ObservableProperty]
-    private Manufacturer _selectedManufacturer = new Manufacturer();
-
-    public bool IsEdit { get; set; } = false;
-
-    [RelayCommand]
-    public async Task SaveCarAsync()
-    {
-
-        if (this.IsValid(this.CarInformation) == false)
-        {
-            MessageBox.Show("Invalid input", "Error", MessageBoxButton.OK);
-            return;
+            GetSupplierList();
+            GetManufacturerList();
         }
 
-        if (this.IsEdit == false)
-        {
-            var input = this.CarInformation;
-            input.ManufacturerId = this.SelectedManufacturer.ManufacturerId;
-            input.SupplierId = this.SelectedSupplier.SupplierId;
+        public bool IsEdit { get; set; } = false;
 
-            input.CarStatus = 1;
-            await this._carInformationService.AddCarInformation(input);
+        [RelayCommand]
+        public async Task SaveCarAsync() {
+            if (IsValid(CarInformation) == false) {
+                MessageBox.Show("Invalid input", "Error", MessageBoxButton.OK);
+                return;
+            }
+
+            if (IsEdit == false) {
+                CarInformation input = CarInformation;
+                input.ManufacturerId = SelectedManufacturer.ManufacturerId;
+                input.SupplierId = SelectedSupplier.SupplierId;
+
+                input.CarStatus = 1;
+                await _carInformationService.AddCarInformation(input);
+            } else {
+                CarInformation input = CarInformation;
+                input.ManufacturerId = SelectedManufacturer.ManufacturerId;
+                input.SupplierId = SelectedSupplier.SupplierId;
+                input.Supplier = null;
+                input.Manufacturer = null;
+                await _carInformationService.UpdateCarInformation(input);
+            }
+
+            _windowManager.CloseCarInformationForm();
+            _windowManager.RefreshCarManagementWindow();
         }
-        else
-        {
-            var input = this.CarInformation;
-            input.ManufacturerId = this.SelectedManufacturer.ManufacturerId;
-            input.SupplierId = this.SelectedSupplier.SupplierId;
-            input.Supplier = null;
-            input.Manufacturer = null;
-            await this._carInformationService.UpdateCarInformation(input);
-        }
-        this._windowManager.CloseCarInformationForm();
-        this._windowManager.RefreshCarManagementWindow();
-    }
 
-    public async void GetSupplierList()
-    {
-
-        var result = await this._supplierService.GetSuppliers();
-        this.Suppliers.Clear();
-        foreach (var item in result)
-        {
-            this.Suppliers.Add(item);
-        }
-    }
-
-    public async void GetManufacturerList()
-    {
-        var result = await this._manufacturerService.GetManufacturers();
-        this.Manufacturers.Clear();
-        foreach (var item in result)
-        {
-            this.Manufacturers.Add(item);
-        }
-    }
-
-    private bool IsValid(object input)
-    {
-        var properties = input.GetType().GetProperties();
-        foreach (var property in properties)
-        {
-            if (property.GetValue(input) == null)
-            {
-                return false;
+        public async void GetSupplierList() {
+            List<Supplier> result = await _supplierService.GetSuppliers();
+            Suppliers.Clear();
+            foreach (Supplier item in result) {
+                Suppliers.Add(item);
             }
         }
-        return true;
-    }
 
+        public async void GetManufacturerList() {
+            List<Manufacturer> result = await _manufacturerService.GetManufacturers();
+            Manufacturers.Clear();
+            foreach (Manufacturer item in result) {
+                Manufacturers.Add(item);
+            }
+        }
+
+        private bool IsValid(object input) {
+            PropertyInfo[] properties = input.GetType().GetProperties();
+            foreach (PropertyInfo property in properties) {
+                if (property.GetValue(input) == null) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
 }

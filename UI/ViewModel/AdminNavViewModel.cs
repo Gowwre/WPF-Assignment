@@ -1,19 +1,27 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-namespace UI.ViewModel;
+namespace UI.ViewModel {
+    public partial class AdminNavViewModel : ObservableObject {
+        private readonly IWindowManager _windowManager;
 
-public partial class AdminNavViewModel : ObservableObject
-{
-    private readonly IWindowManager _windowManager;
-    public AdminNavViewModel(IWindowManager windowManager) => this._windowManager = windowManager;
+        public AdminNavViewModel(IWindowManager windowManager) {
+            _windowManager = windowManager;
+        }
 
-    [RelayCommand]
-    public void OpenCarManagementWindow() => this._windowManager.ShowCarManagementWindow();
+        [RelayCommand]
+        public void OpenCarManagementWindow() {
+            _windowManager.ShowCarManagementWindow();
+        }
 
-    [RelayCommand]
-    public void OpenCustomerManagementWindow() => this._windowManager.ShowCustomerManagementWindow();
+        [RelayCommand]
+        public void OpenCustomerManagementWindow() {
+            _windowManager.ShowCustomerManagementWindow();
+        }
 
-    [RelayCommand]
-    public void OpenRentingTransactionWindow() => this._windowManager.ShowRentingTransactionWindow();
+        [RelayCommand]
+        public void OpenRentingTransactionWindow() {
+            _windowManager.ShowRentingTransactionWindow();
+        }
+    }
 }

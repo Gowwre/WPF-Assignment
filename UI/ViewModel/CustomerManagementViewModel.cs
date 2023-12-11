@@ -1,55 +1,54 @@
-using DataAccess.Entities;
-using DataAccess.Services;
 using BusinessObjects.Entities;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DataAccess.Services;
 using System.Collections.ObjectModel;
 using System.Windows;
 
-namespace UI.ViewModel;
+namespace UI.ViewModel {
+    public partial class CustomerManagementViewModel : ObservableObject {
+        private readonly ICustomerService _customerService;
+        private readonly IWindowManager _windowManager;
 
-public partial class CustomerManagementViewModel : ObservableObject
-{
-    private readonly IWindowManager _windowManager;
-    private readonly ICustomerService _customerService;
+        [ObservableProperty] private ObservableCollection<Customer> _customers;
 
-    public CustomerManagementViewModel(ICustomerService customerService, IWindowManager windowManager) {
-        _customerService = customerService;
-        _windowManager = windowManager;
+        [ObservableProperty] private Customer _selectedCustomer;
 
-        Customers = new ObservableCollection<Customer>();
-        _ = GetCustomerList();
-    }
+        public CustomerManagementViewModel(ICustomerService customerService, IWindowManager windowManager) {
+            _customerService = customerService;
+            _windowManager = windowManager;
 
-    [ObservableProperty]
-    private ObservableCollection<Customer> _customers;
-    [ObservableProperty]
-    private Customer _selectedCustomer;
-
-    [RelayCommand]
-    public async Task GetCustomerList() {
-        var customers = await _customerService.GetCustomers();
-        Customers.Clear();
-        foreach (var customer in customers) {
-            Customers.Add(customer);
-        }
-    }
-
-    [RelayCommand]
-    public async Task DeleteCustomer() {
-        var result = MessageBox.Show("Are you sure you want to delete this customer?", "Confirmation", MessageBoxButton.YesNo);
-
-        if (result == MessageBoxResult.No) {
-            return;
+            Customers = new ObservableCollection<Customer>();
+            _ = GetCustomerList();
         }
 
-        var input = SelectedCustomer;
-        try {
-            await _customerService.DeleteCustomer(input);
-        } catch (Exception ex) {
-            MessageBox.Show(ex.Message);
-            return;
+        [RelayCommand]
+        public async Task GetCustomerList() {
+            List<Customer> customers = await _customerService.GetCustomers();
+            Customers.Clear();
+            foreach (Customer customer in customers) {
+                Customers.Add(customer);
+            }
         }
-        await GetCustomerList();
+
+        [RelayCommand]
+        public async Task DeleteCustomer() {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this customer?", "Confirmation",
+                MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.No) {
+                return;
+            }
+
+            Customer input = SelectedCustomer;
+            try {
+                await _customerService.DeleteCustomer(input);
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            await GetCustomerList();
+        }
     }
 }

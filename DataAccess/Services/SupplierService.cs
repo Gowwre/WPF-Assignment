@@ -1,13 +1,16 @@
-﻿using DataAccess.Entities;
-using BusinessObjects.Entities;
+﻿using BusinessObjects.Entities;
 using DataAccess.Repositories;
 
-namespace DataAccess.Services;
+namespace DataAccess.Services {
+    public class SupplierService : ISupplierService {
+        private readonly ISupplierRepository _supplierRepository;
 
-public class SupplierService : ISupplierService
-{
-    private readonly ISupplierRepository _supplierRepository;
-    public SupplierService(ISupplierRepository supplierRepository) => this._supplierRepository = supplierRepository;
+        public SupplierService(ISupplierRepository supplierRepository) {
+            _supplierRepository = supplierRepository;
+        }
 
-    public Task<List<Supplier>> GetSuppliers() => this._supplierRepository.GetAllSuppliers();
+        public Task<List<Supplier>> GetSuppliers() {
+            return _supplierRepository.GetAllSuppliers();
+        }
+    }
 }

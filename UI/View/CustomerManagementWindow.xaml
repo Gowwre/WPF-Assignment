@@ -3,33 +3,35 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UI.View"
-       xmlns:viewmodel="clr-namespace:UI.ViewModel"
+        xmlns:viewmodel="clr-namespace:UI.ViewModel"
         d:DataContext="{d:DesignInstance Type=viewmodel:CustomerManagementViewModel}"
-        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" 
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:utils="clr-namespace:UI.Utils"
         mc:Ignorable="d"
         Title="CustomerManagementWindow" Height="450" Width="800">
     <Window.Resources>
         <Style TargetType="ui:DataGrid">
-            <Setter Property="RowBackground" Value="LightBlue"/>
-            <Setter Property="AlternatingRowBackground" Value="LightYellow"/>
+            <Setter Property="RowBackground" Value="LightBlue" />
+            <Setter Property="AlternatingRowBackground" Value="LightYellow" />
         </Style>
         <utils:NullToBoolConverter x:Key="NullToBoolConverter" />
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
-            <ui:Button Appearance="Primary" Content="Delete Selected" Margin="5" IsEnabled="{Binding SelectedCustomer, Converter={StaticResource NullToBoolConverter}}" Command="{Binding DeleteCustomerCommand}"/>
+            <ui:Button Appearance="Primary" Content="Delete Selected" Margin="5"
+                       IsEnabled="{Binding SelectedCustomer, Converter={StaticResource NullToBoolConverter}}"
+                       Command="{Binding DeleteCustomerCommand}" />
         </StackPanel>
 
         <ui:DataGrid Grid.Row="1" ItemsSource="{Binding Customers}"
                      SelectedItem="{Binding SelectedCustomer,Mode=TwoWay}"
-                     IsReadOnly="True" Margin="5" SelectionMode="Single" Focusable="True" AutoGenerateColumns="True" Width="*"/>
+                     IsReadOnly="True" Margin="5" SelectionMode="Single" Focusable="True" AutoGenerateColumns="True"
+                     Width="*" />
     </Grid>
 </Window>

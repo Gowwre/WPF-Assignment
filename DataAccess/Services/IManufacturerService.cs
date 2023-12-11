@@ -1,9 +1,7 @@
-﻿using DataAccess.Entities;
-using BusinessObjects.Entities;
+﻿using BusinessObjects.Entities;
 
-namespace DataAccess.Services;
-
-public interface IManufacturerService
-{
-    Task<List<Manufacturer>> GetManufacturers();
+namespace DataAccess.Services {
+    public interface IManufacturerService {
+        Task<List<Manufacturer>> GetManufacturers();
+    }
 }

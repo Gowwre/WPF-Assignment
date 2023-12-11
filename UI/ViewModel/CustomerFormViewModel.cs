@@ -1,8 +1,7 @@
-﻿using DataAccess.Entities;
-using DataAccess.Services;
-using BusinessObjects.Entities;
+﻿using BusinessObjects.Entities;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DataAccess.Services;
 
 namespace UI.ViewModel {
     public partial class CustomerFormViewModel : ObservableObject {
@@ -11,12 +10,12 @@ namespace UI.ViewModel {
 
         [ObservableProperty] private Customer _customer = new();
 
-        public bool IsEdit { get; set; } = false;
-
         public CustomerFormViewModel(ICustomerService customerService, IWindowManager windowManager) {
             _customerService = customerService;
             _windowManager = windowManager;
         }
+
+        public bool IsEdit { get; set; } = false;
 
         [RelayCommand]
         public async Task SaveCustomer() {

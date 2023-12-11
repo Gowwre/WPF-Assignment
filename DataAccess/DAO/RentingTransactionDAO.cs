@@ -22,9 +22,9 @@ namespace DataAccess.DAO {
         }
 
         public Task<List<RentingTransaction>> GetAllRentingTransactions() {
-            var dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
             try {
-                var result = dbContext.RentingTransactions.ToListAsync();
+                Task<List<RentingTransaction>> result = dbContext.RentingTransactions.ToListAsync();
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);
@@ -32,9 +32,9 @@ namespace DataAccess.DAO {
         }
 
         public Task<List<RentingTransaction>> GetRentingTransactionsByCustomerEmail(string email) {
-            var dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
             try {
-                var result = dbContext.RentingTransactions
+                Task<List<RentingTransaction>> result = dbContext.RentingTransactions
                     .Include(x => x.Customer)
                     .Where(x => x.Customer.Email == email)
                     .ToListAsync();
@@ -45,9 +45,9 @@ namespace DataAccess.DAO {
         }
 
         public Task<List<RentingDetail>> GetRentingDetails() {
-            var dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
             try {
-                var result = dbContext.RentingDetails.ToListAsync();
+                Task<List<RentingDetail>> result = dbContext.RentingDetails.ToListAsync();
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);
@@ -55,9 +55,9 @@ namespace DataAccess.DAO {
         }
 
         public Task<List<RentingTransaction>> GetRentingTransactions() {
-            var dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
             try {
-                var result = dbContext.RentingTransactions.ToListAsync();
+                Task<List<RentingTransaction>> result = dbContext.RentingTransactions.ToListAsync();
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);

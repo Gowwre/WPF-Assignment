@@ -1,58 +1,60 @@
 ﻿<Window x:Class="UI.View.CarInformationFormWindow"
 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
- xmlns:local="clr-namespace:UI.View" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         d:DataContext="{d:DesignInstance Type=viewmodel:CarFormViewModel}"
-        xmlns:viewmodel="clr-namespace:UI.ViewModel" 
- mc:Ignorable="d"
- xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:viewmodel="clr-namespace:UI.ViewModel"
+        mc:Ignorable="d"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         Title="New Car Information" Height="790" Width="400"
         ResizeMode="NoResize">
 
     <StackPanel Margin="10">
-        <TextBlock Text="Car Name:" Margin="5"/>
-        <ui:TextBox x:Name="CarNameTextBox" Text="{Binding CarInformation.CarName, Mode=TwoWay}" Margin="5"/>
+        <TextBlock Text="Car Name:" Margin="5" />
+        <ui:TextBox x:Name="CarNameTextBox" Text="{Binding CarInformation.CarName, Mode=TwoWay}" Margin="5" />
 
-        <TextBlock Text="Description:" Margin="5"/>
-        <ui:TextBox x:Name="DescriptionTextBox" Text="{Binding CarInformation.CarDescription, Mode=TwoWay}" Margin="5"/>
+        <TextBlock Text="Description:" Margin="5" />
+        <ui:TextBox x:Name="DescriptionTextBox" Text="{Binding CarInformation.CarDescription, Mode=TwoWay}" Margin="5" />
 
-        <TextBlock Text="Number of Doors:" x:Name="noOfDoors" Margin="5"/>
-        <ui:TextBox x:Name="NumberOfDoorsTextBox" Text="{Binding CarInformation.NumberOfDoors}" Margin="5"/>
+        <TextBlock Text="Number of Doors:" x:Name="noOfDoors" Margin="5" />
+        <ui:TextBox x:Name="NumberOfDoorsTextBox" Text="{Binding CarInformation.NumberOfDoors}" Margin="5" />
 
-        <TextBlock Text="Seating Capacity:" Margin="5"/>
-        <ui:TextBox x:Name="SeatingCapacityTextBox" Text="{Binding CarInformation.SeatingCapacity}" Margin="5"/>
+        <TextBlock Text="Seating Capacity:" Margin="5" />
+        <ui:TextBox x:Name="SeatingCapacityTextBox" Text="{Binding CarInformation.SeatingCapacity}" Margin="5" />
 
-        <TextBlock Text="Fuel Type:" Margin="5"/>
-        <ComboBox x:Name="FuelTypeComboBox" SelectedValue="{Binding CarInformation.FuelType, Mode=TwoWay}" SelectedValuePath="Content" Margin="5">
+        <TextBlock Text="Fuel Type:" Margin="5" />
+        <ComboBox x:Name="FuelTypeComboBox" SelectedValue="{Binding CarInformation.FuelType, Mode=TwoWay}"
+                  SelectedValuePath="Content" Margin="5">
             <!-- Add ComboBox items here e.g. Diesel, Petrol, Electric -->
-            <ComboBoxItem Content="Gasoline"/>
-            <ComboBoxItem Content="Electricity"/>
-            <ComboBoxItem Content="Diesel"/>
+            <ComboBoxItem Content="Gasoline" />
+            <ComboBoxItem Content="Electricity" />
+            <ComboBoxItem Content="Diesel" />
         </ComboBox>
 
-        <TextBlock Text="Year:" Margin="5"/>
-        <ui:TextBox x:Name="YearTextBox" Text="{Binding CarInformation.Year}" Margin="5"/>
+        <TextBlock Text="Year:" Margin="5" />
+        <ui:TextBox x:Name="YearTextBox" Text="{Binding CarInformation.Year}" Margin="5" />
 
-        <TextBlock Text="Renting Price Per Day:" Margin="5"/>
-        <ui:TextBox x:Name="RentingPricePerDayTextBox" Text="{Binding CarInformation.CarRentingPricePerDay}" Margin="5"/>
+        <TextBlock Text="Renting Price Per Day:" Margin="5" />
+        <ui:TextBox x:Name="RentingPricePerDayTextBox" Text="{Binding CarInformation.CarRentingPricePerDay}" Margin="5" />
 
-        <TextBlock Text="Manufacturer:" Margin="5"/>
+        <TextBlock Text="Manufacturer:" Margin="5" />
         <!-- Manufacturer ComboBox: Assuming you have a list of manufacturers -->
-        <ComboBox x:Name="ManufacturerComboBox" Margin="5" ItemsSource="{Binding Manufacturers}" IsSynchronizedWithCurrentItem="False" SelectedItem="{Binding SelectedManufacturer, Mode=TwoWay}" DisplayMemberPath="ManufacturerName"
-                  />
+        <ComboBox x:Name="ManufacturerComboBox" Margin="5" ItemsSource="{Binding Manufacturers}"
+                  IsSynchronizedWithCurrentItem="False" SelectedItem="{Binding SelectedManufacturer, Mode=TwoWay}"
+                  DisplayMemberPath="ManufacturerName" />
 
-        <TextBlock Text="Supplier:" Margin="5"/>
+        <TextBlock Text="Supplier:" Margin="5" />
         <!-- Supplier ComboBox: Assuming you have a list of suppliers -->
-        <ComboBox x:Name="SupplierComboBox" Margin="5" ItemsSource="{Binding Suppliers}" IsSynchronizedWithCurrentItem="False" SelectedItem="{Binding SelectedSupplier, Mode=TwoWay}" DisplayMemberPath="SupplierName"
-                 />
+        <ComboBox x:Name="SupplierComboBox" Margin="5" ItemsSource="{Binding Suppliers}"
+                  IsSynchronizedWithCurrentItem="False" SelectedItem="{Binding SelectedSupplier, Mode=TwoWay}"
+                  DisplayMemberPath="SupplierName" />
 
         <!-- Additional fields as necessary... -->
 
-        <ui:Button Content="Save" Appearance="Primary" Margin="5" Width="100" HorizontalAlignment="Right" Command="{Binding SaveCarCommand}" />
+        <ui:Button Content="Save" Appearance="Primary" Margin="5" Width="100" HorizontalAlignment="Right"
+                   Command="{Binding SaveCarCommand}" />
     </StackPanel>
 </Window>
-

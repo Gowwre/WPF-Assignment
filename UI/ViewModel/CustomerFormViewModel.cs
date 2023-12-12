@@ -24,6 +24,7 @@ namespace UI.ViewModel {
             if (IsEdit) {
                 await _customerService.EditCustomer(input);
             } else {
+                input.CustomerStatus = 1;
                 await _customerService.RegisterCustomer(input);
             }
 

@@ -25,7 +25,7 @@ namespace DataAccess.Entities {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             optionsBuilder.UseSqlServer(
-                "Server=RADRIAR-L41R\\RADRIAR;Database=FUCarRentingManagement;User Id=sa;Password=12345;Trusted_Connection=True;TrustServerCertificate=True");
+                GetConnectionString());
         }
 
         public string GetConnectionString() {

@@ -4,31 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:utils="clr-namespace:UI.Utils"
         xmlns:viewmodel="clr-namespace:UI.ViewModel"
         d:DataContext="{d:DesignInstance Type=viewmodel:RentingTransactionManagementViewModel}"
         mc:Ignorable="d"
         Title="RentingTransactionWindow" Height="450" Width="800">
-
+    <Window.Resources>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
-            <ui:Button Appearance="Primary" Content="Add New" Margin="5" Command="{Binding ShowCarFormCommand}" />
-            <ui:Button Appearance="Primary" Content="Edit Selected"
-                       IsEnabled="{Binding SelectedCarInformation, Converter={StaticResource NullToBoolConverter}}"
-                       Margin="5" Command="{Binding ShowCarEditFormCommand}" />
-            <ui:Button Appearance="Primary" Content="Delete Selected" Margin="5"
-                       IsEnabled="{Binding SelectedCarInformation, Converter={StaticResource NullToBoolConverter}}"
-                       Command="{Binding DeleteCarCommand}" />
-            <ui:TextBox Text="{Binding SearchText}" x:Name="SearchTextBox" Width="200" Margin="5" />
-            <ui:Button Appearance="Primary" Content="Search" Margin="5" Command="{Binding SearchCarInformationCommand}" />
-        </StackPanel>
-
-        <ui:DataGrid ItemsSource="{Binding CarInformations}"
-                     SelectedItem="{Binding SelectedCarInformation, Mode=TwoWay}"
+        <ui:DataGrid ItemsSource="{Binding RentingTransactions}"
+                     SelectedItem="{Binding SelectedRentingTransaction, Mode=TwoWay}"
                      AutoGenerateColumns="False" Grid.Row="1"
                      IsReadOnly="True" Margin="5" SelectionMode="Single"
                      Focusable="True" RowBackground="LightYellow" AlternatingRowBackground="LightBlue">
@@ -42,30 +31,11 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <!-- Text Column for Car Name -->
-                <DataGridTextColumn Header="Car Name" Width="*" Binding="{Binding CarName}" />
-
-                <!-- Text Column for Description -->
-                <DataGridTextColumn Header="Description" Width="*" Binding="{Binding CarDescription}" />
-
-                <!-- Numeric Column for Year -->
-                <DataGridTextColumn Header="Year" Width="*" Binding="{Binding Year}" />
-
-                <!-- Numeric Column for Renting Price Per Day -->
-                <DataGridTextColumn Header="Price Per Day" Width="*"
-                                    Binding="{Binding CarRentingPricePerDay, StringFormat=C}" />
-
-                <DataGridTextColumn Header="Fuel Type" Width="*" Binding="{Binding FuelType}" />
-
-                <!-- ComboBox Column for Manufacturer -->
-                <!-- This requires setting up a value converter or using a specific field from Manufacturer -->
-                <DataGridTextColumn Header="Manufacturer" Width="*" Binding="{Binding Manufacturer.ManufacturerName}" />
-
-                <!-- ComboBox Column for Supplier -->
-                <!-- This requires setting up a value converter or using a specific field from Supplier -->
-                <DataGridTextColumn Header="Supplier" Width="*" Binding="{Binding Supplier.SupplierName}" />
-
-                <!-- Additional custom columns as necessary... -->
+                <DataGridTextColumn Header="Id" Width="*" Binding="{Binding RentingTransationId}" />
+                <DataGridTextColumn Header="Customer Name" Width="*" Binding="{Binding Customer.CustomerName}" />
+                <DataGridTextColumn Header="Total Price" Width="*" Binding="{Binding TotalPrice}" />
+                <DataGridTextColumn Header="Date" Width="*" Binding="{Binding RentingDate}" />
+                <DataGridTextColumn Header="Status" Width="*" Binding="{Binding RentingStatus}" />
             </DataGrid.Columns>
         </ui:DataGrid>
     </Grid>

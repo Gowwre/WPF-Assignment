@@ -57,7 +57,11 @@ namespace DataAccess.DAO {
         public Task<List<RentingTransaction>> GetRentingTransactions() {
             FucarRentingManagementContext dbContext = new();
             try {
-                Task<List<RentingTransaction>> result = dbContext.RentingTransactions.ToListAsync();
+                IQueryable<RentingTransaction> query = dbContext.RentingTransactions.AsQueryable();
+
+                query = query.Include(x => x.Customer);
+
+                Task<List<RentingTransaction>> result = query.ToListAsync();
                 return result;
             } catch (Exception e) {
                 throw new Exception(e.Message);

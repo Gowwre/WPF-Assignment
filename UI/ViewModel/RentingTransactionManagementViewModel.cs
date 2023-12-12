@@ -9,6 +9,7 @@ namespace UI.ViewModel {
         private readonly IWindowManager _windowManager;
 
         [ObservableProperty] private ObservableCollection<RentingTransaction> _rentingTransactions;
+        [ObservableProperty] private RentingTransaction _selectedRentingTransaction;
 
         public RentingTransactionManagementViewModel(IRentingTransactionService rentingTransactionService,
             IWindowManager windowManager) {

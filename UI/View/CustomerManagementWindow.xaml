@@ -31,7 +31,15 @@
 
         <ui:DataGrid Grid.Row="1" ItemsSource="{Binding Customers}"
                      SelectedItem="{Binding SelectedCustomer,Mode=TwoWay}"
-                     IsReadOnly="True" Margin="5" SelectionMode="Single" Focusable="True" AutoGenerateColumns="True"
-                     Width="*" />
+                     IsReadOnly="True" Margin="5" SelectionMode="Single" Focusable="True" AutoGenerateColumns="False"
+                     Width="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Customer Name" Width="*" Binding="{Binding CustomerName}" />
+                <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Phone" Width="*" Binding="{Binding Telephone}" />
+                <DataGridTextColumn Header="Birthday" Width="*" Binding="{Binding CustomerBirthday}" />
+                <DataGridTextColumn Header="Status" Width="*" Binding="{Binding CustomerStatus}" />
+            </DataGrid.Columns>
+        </ui:DataGrid>
     </Grid>
 </Window>

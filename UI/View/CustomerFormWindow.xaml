@@ -40,7 +40,8 @@
                     Margin="0,0,0,20" />
 
         <Label Grid.Row="8" Content="Password:" Margin="0,0,0,10" />
-        <TextBox Grid.Row="9" Text="{Binding Customer.Password}" Margin="0,0,0,20" Padding="5" />
+        <ui:PasswordBox Grid.Row="9" PasswordChanged="PasswordBox_OnPasswordChanged" Text="{Binding Customer.Password}"
+                        Margin="0,0,0,20" Padding="5" />
 
         <ui:Button Appearance="Primary" Grid.Row="10" Content="Save" Padding="10" HorizontalAlignment="Right"
                    Command="{Binding SaveCustomerCommand}" />

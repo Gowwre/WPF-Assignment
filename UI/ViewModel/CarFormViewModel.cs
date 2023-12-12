@@ -43,11 +43,6 @@ namespace UI.ViewModel {
 
         [RelayCommand]
         public async Task SaveCarAsync() {
-            if (IsValid(CarInformation) == false) {
-                MessageBox.Show("Invalid input", "Error", MessageBoxButton.OK);
-                return;
-            }
-
             if (IsEdit == false) {
                 CarInformation input = CarInformation;
                 input.ManufacturerId = SelectedManufacturer.ManufacturerId;

@@ -10,14 +10,12 @@ namespace UI.Auth {
 
         public Task<AuthenticationResult> Login(string email, string password) {
             if (ConfigurationManager.GetAdminEmail() == email && ConfigurationManager.GetAdminPassword() == password) {
-                AuthenticationResult result =
-                    new AuthenticationResult { IsAuthenticated = true, Role = UserRole.Admin, Email = email };
+                AuthenticationResult result = new() { IsAuthenticated = true, Role = UserRole.Admin, Email = email };
                 return Task.FromResult(result);
             }
 
             if (_customerService.Login(email, password) != null) {
-                AuthenticationResult result =
-                    new AuthenticationResult { IsAuthenticated = true, Role = UserRole.Customer, Email = email };
+                AuthenticationResult result = new() { IsAuthenticated = true, Role = UserRole.Customer, Email = email };
                 return Task.FromResult(result);
             }
 

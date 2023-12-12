@@ -12,7 +12,7 @@ namespace UI {
         private readonly IServiceProvider _serviceProvider;
 
         public App() {
-            ServiceCollection serviceCollection = new ServiceCollection();
+            ServiceCollection serviceCollection = new();
             ConfigureServices(serviceCollection);
             _serviceProvider = serviceCollection.BuildServiceProvider();
         }

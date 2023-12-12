@@ -22,7 +22,7 @@ namespace DataAccess.DAO {
         }
 
         public Task<List<RentingTransaction>> GetAllRentingTransactions() {
-            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new();
             try {
                 Task<List<RentingTransaction>> result = dbContext.RentingTransactions.ToListAsync();
                 return result;
@@ -32,7 +32,7 @@ namespace DataAccess.DAO {
         }
 
         public Task<List<RentingTransaction>> GetRentingTransactionsByCustomerEmail(string email) {
-            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new();
             try {
                 Task<List<RentingTransaction>> result = dbContext.RentingTransactions
                     .Include(x => x.Customer)
@@ -45,7 +45,7 @@ namespace DataAccess.DAO {
         }
 
         public Task<List<RentingDetail>> GetRentingDetails() {
-            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new();
             try {
                 Task<List<RentingDetail>> result = dbContext.RentingDetails.ToListAsync();
                 return result;
@@ -55,7 +55,7 @@ namespace DataAccess.DAO {
         }
 
         public Task<List<RentingTransaction>> GetRentingTransactions() {
-            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new();
             try {
                 Task<List<RentingTransaction>> result = dbContext.RentingTransactions.ToListAsync();
                 return result;

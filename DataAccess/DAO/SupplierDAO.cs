@@ -22,7 +22,7 @@ namespace DataAccess.DAO {
         }
 
         public Task<List<Supplier>> GetAllSuppliers() {
-            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new();
             try {
                 Task<List<Supplier>> result = dbContext.Suppliers.ToListAsync();
                 return result;

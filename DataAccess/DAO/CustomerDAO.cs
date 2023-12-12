@@ -53,7 +53,7 @@ namespace DataAccess.DAO {
         }
 
         public Task AddCustomer(Customer newCustomer) {
-            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new();
             try {
                 dbContext.Customers.Add(newCustomer);
                 return dbContext.SaveChangesAsync();
@@ -63,7 +63,7 @@ namespace DataAccess.DAO {
         }
 
         public Task UpdateCustomer(Customer customer) {
-            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new();
             try {
                 dbContext.Customers.Update(customer);
                 return dbContext.SaveChangesAsync();
@@ -73,7 +73,7 @@ namespace DataAccess.DAO {
         }
 
         public Task<Customer> GetOne(string currentUserEmail) {
-            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new();
             try {
                 Task<Customer?> result = dbContext.Customers.Where(c => c.Email == currentUserEmail)
                     .FirstOrDefaultAsync();

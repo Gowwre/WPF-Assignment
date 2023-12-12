@@ -20,7 +20,7 @@ namespace DataAccess.DAO {
         }
 
         public Task<List<Manufacturer>> GetAllManufacturers() {
-            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new();
             try {
                 Task<List<Manufacturer>> result = dbContext.Manufacturers.ToListAsync();
                 return result;
@@ -30,7 +30,7 @@ namespace DataAccess.DAO {
         }
 
         public Task<Manufacturer> GetManufacturer(string name) {
-            FucarRentingManagementContext dbContext = new FucarRentingManagementContext();
+            FucarRentingManagementContext dbContext = new();
             try {
                 Task<Manufacturer?> result = dbContext.Manufacturers.Where(m => m.ManufacturerName == name)
                     .FirstOrDefaultAsync();
